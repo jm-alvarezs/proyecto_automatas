@@ -1,18 +1,19 @@
 import React, { Component } from "react";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Container, Col, Card, Row, Button } from "react-bootstrap";
 import AdminTable from "./common/AdminTable";
 
 class Section extends Component {
   render() {    
     return (
-      <Container fluid={true} className="pl-0 pr-0 mt-3 mb-3">
+      <Container fluid={true} className="pl-0 pr-0 mt-4 mb-4">
+        <Card className="p-4 shadow">
         <Row className="mb-1">
           <Col xs={8}>
             <h3>{this.props.title}</h3>
           </Col>
           <Col xs={4}>
-            <Button onClick={this.props.onClick} block>
-              Agregar
+            <Button variant="outline-primary" onClick={this.props.onClick} block>
+              + Agregar
             </Button>
           </Col>
         </Row>
@@ -26,6 +27,7 @@ class Section extends Component {
           deleteRow={this.props.deleteRow}
           inputModifier={this.props.inputModifier}
         />
+        </Card>
       </Container>
     );
   }

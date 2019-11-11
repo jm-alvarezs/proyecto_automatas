@@ -3,6 +3,16 @@ const INITIAL_STATE = {
   transicion: undefined
 };
 
+const evaluar = (cadena, transiciones, inicial) => {
+  let estado = inicial;
+  for(let i = 0; i < cadena.length; i++) {
+    let transicion = transiciones.find(transicion => transicion.inicial === estado && transicion.simbolo === cadena[i]);
+    if(transicion) estado = transicion.final;
+    else estado = undefined;
+  }
+  return estado;
+}
+
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "CREATE_TRANSICION":
