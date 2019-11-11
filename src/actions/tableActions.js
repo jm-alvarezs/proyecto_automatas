@@ -6,7 +6,7 @@ export const saveRow = (element, reducer) => dispatch => {
     dispatch({ type: `SAVE_${reducer}`, payload: element });    
 };
 
-export const setPropertyRow = (key, reducer, value) => dispatch => {
+export const setPropertyRow = (key, reducer, value) => dispatch => {    
     dispatch({ type: `SET_${key.toUpperCase()}_${reducer}`, payload: { key, value }});
 };
 

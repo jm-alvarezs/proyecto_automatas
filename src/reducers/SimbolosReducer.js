@@ -16,13 +16,16 @@ export default (state = INITIAL_STATE, action) => {
     case "SET_SIMBOLO_SIMBOLO":
         let simbolo = {...state.simbolo};
         simbolo[action.payload.key] = action.payload.value;
-        return { ...state, simbolo };
+        let symbolos = [...state.simbolos];
+        let i = symbolos.findIndex(symbol => symbol.id === simbolo.id);        
+        if(i !== -1) symbolos[i] = simbolo;        
+        return { ...state, simbolo, simbolos: symbolos };
     case "SAVE_SIMBOLO":
         let symbols = [...state.simbolos];
         let symbol = {...state.simbolo};
-        let idx = symbols.find(simbolo => simbolo.id === symbol.id);
-        if(idx !== -1) symbols[idx] = symbol;
-        return { ...state, simbolos: symbols };
+        let idx = symbols.findIndex(simbolo => simbolo.id === symbol.id);        
+        if(idx !== -1) symbols[idx] = symbol;        
+        return { ...state, simbolos: symbols, simbolo: undefined };
     default:
       return { ...state };
   }

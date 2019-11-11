@@ -48,16 +48,17 @@ class Home extends Component {
         <Row>
           <Col
             md={6}
-            className="bg-dark text-white fixed"
             style={{ minHeight: "100vh" }}
           >
             <Menu>
               <Section
+                idRow="id"
                 title="Símbolos"
                 rows={this.props.simbolos}
                 editedRow={this.props.simbolo}
-                idRow="id"
+                saveRow={simbolo => this.props.saveRow(simbolo, "SIMBOLO")}                
                 onClick={() => this.agregar("SIMBOLO")}
+                inputModifier={(property, reducer, value) => this.props.setPropertyRow(property, "SIMBOLO", value)}
               />
               <Section
                 title="Estados"

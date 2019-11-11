@@ -65,7 +65,7 @@ class AdminTable extends Component {
 
   hasActions() {
     return (
-      this.props.editRow || this.props.deleteRow || this.props.customActions
+      this.props.editRow || this.props.deleteRow || this.props.customActions || this.props.saveRow
     );
   }
 
@@ -117,7 +117,7 @@ class AdminTable extends Component {
     });
   }
 
-  renderActions(row) {
+  renderActions(row) {    
     if (this.props.editedRow) {
       if (this.props.editedRow[this.props.idRow] === row[this.props.idRow])
         return (
@@ -195,7 +195,7 @@ class AdminTable extends Component {
     } else if (this.props.rows) {
       rowsToRender = this.props.rows;
     }
-    if (!rowsToRender) return <></>;
+    if (!rowsToRender) return <></>;    
     return (
       <tbody>
         {rowsToRender.map((row, index) => {

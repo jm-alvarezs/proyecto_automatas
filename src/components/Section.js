@@ -3,7 +3,7 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import AdminTable from "./common/AdminTable";
 
 class Section extends Component {
-  render() {
+  render() {    
     return (
       <Container fluid={true} className="pl-0 pr-0">
         <Row>
@@ -21,6 +21,8 @@ class Section extends Component {
           rows={this.props.rows}
           editedRow={this.props.editedRow}
           idRow={this.props.idRow}
+          saveRow={this.props.saveRow}
+          inputModifier={this.props.inputModifier}
         />
       </Container>
     );
