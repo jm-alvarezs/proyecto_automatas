@@ -71,6 +71,10 @@ class Home extends Component {
                 editedRow={this.props.estado}
                 onClick={() => this.agregar("ESTADO")}
                 headers={["Nombre"]}
+                saveRow={this.props.saveRow}
+                reducer="ESTADO"
+                inputModifier={this.props.setPropertyRow}
+                deleteRow={idRow => this.props.deleteRow("ESTADO", idRow)}
               />
               <Section
                 title="Transiciones"

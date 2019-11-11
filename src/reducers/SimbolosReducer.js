@@ -15,11 +15,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, simbolo: action.payload };
     case "SET_SIMBOLO_SIMBOLO":
         let simbolo = {...state.simbolo};
-        simbolo[action.payload.key] = action.payload.value;
-        let symbolos = [...state.simbolos];
-        let i = symbolos.findIndex(symbol => symbol.id === simbolo.id);        
-        if(i !== -1) symbolos[i] = simbolo;        
-        return { ...state, simbolo, simbolos: symbolos };
+        simbolo[action.payload.key] = action.payload.value;                
+        return { ...state, simbolo };
     case "SAVE_SIMBOLO":
         let symbols = [...state.simbolos];
         let symbol = {...state.simbolo};

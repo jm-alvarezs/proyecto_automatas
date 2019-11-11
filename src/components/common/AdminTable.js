@@ -106,8 +106,8 @@ class AdminTable extends Component {
             return (
               <td key={"col" + index}>
                 <Input
-                  type={isNumber(row[column]) ? "number" : "text"}
-                  value={row[column]}
+                  type={isNumber(this.props.editedRow[column]) ? "number" : "text"}
+                  value={this.props.editedRow[column]}
                   modifier={this.props.inputModifier}
                   args={[column, this.props.reducer]}
                 />
@@ -127,7 +127,7 @@ class AdminTable extends Component {
           <td>
             <Button
               variant="outline-primary"
-              onClick={() => this.props.saveRow(row, this.props.reducer)}
+              onClick={() => this.props.saveRow(this.props.editedRow, this.props.reducer)}
             >
               Guardar
             </Button>

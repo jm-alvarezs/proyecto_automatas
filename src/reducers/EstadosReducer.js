@@ -22,9 +22,14 @@ export default (state = INITIAL_STATE, action) => {
     case "SAVE_ESTADO":
       let states = [...state.estados];
       let estadoActual = { ...state.estado };
-      let idx = states.find(estado => estado.id === estadoActual.id);
+      let idx = states.findIndex(estado => estado.id === estadoActual.id);      
       if (idx !== -1) states[idx] = estadoActual;
-      return { ...state, estados: states };
+      return { ...state, estados: states, estado: undefined };
+    case "DELETE_ESTADO":
+      let status = [...state.estados];
+      let i = status.findIndex(estado => estado.id === action.payload);
+      if(i !== -1) status.splice(i, 1);
+      return { ...state, estados: status };
     default:
       return { ...state };
   }
