@@ -35,7 +35,7 @@ class Home extends Component {
         schema = { id: this.props.estados.length, nombre: "" };
         break;
       case "TRANSICION":
-        schema = { inicial: 0, final: 0, simbolo: "" };
+        schema = { inicial: "", simbolo: "", final: "" };
         break;
       default:
         schema = { id: 0 };
@@ -47,18 +47,15 @@ class Home extends Component {
     return (
       <Container fluid={true}>
         <Row>
-          <Col
-            md={6}
-            style={{ minHeight: "100vh" }}
-          >
+          <Col md={6} style={{ minHeight: "100vh" }}>
             <Menu>
               <Section
                 idRow="id"
                 title="Símbolos"
                 reducer="SIMBOLO"
                 rows={this.props.simbolos}
+                saveRow={this.props.saveRow}
                 editedRow={this.props.simbolo}
-                saveRow={this.props.saveRow}                
                 onClick={() => this.agregar("SIMBOLO")}
                 inputModifier={this.props.setPropertyRow}
                 deleteRow={idRow => this.props.deleteRow("SIMBOLO", idRow)}
@@ -67,21 +64,26 @@ class Home extends Component {
               <Section
                 idRow="id"
                 title="Estados"
+                reducer="ESTADO"
+                headers={["Nombre"]}
                 rows={this.props.estados}
+                saveRow={this.props.saveRow}
                 editedRow={this.props.estado}
                 onClick={() => this.agregar("ESTADO")}
-                headers={["Nombre"]}
-                saveRow={this.props.saveRow}
-                reducer="ESTADO"
                 inputModifier={this.props.setPropertyRow}
                 deleteRow={idRow => this.props.deleteRow("ESTADO", idRow)}
               />
               <Section
+                idRow="id"
                 title="Transiciones"
+                reducer="TRANSICION"
+                saveRow={this.props.saveRow}
                 rows={this.props.transiciones}
                 editedRow={this.props.transicion}
+                headers={["Inicial", "Símbolo", "Final"]}
                 onClick={() => this.agregar("TRANSICION")}
-                headers={["Inicial"].concat(this.props.simbolos.map(simbolo => simbolo.simbolo))}
+                deleteRow={idRow => this.props.deleteRow("TRANSICION", idRow)}
+                inputModifier={this.props.setPropertyRow}
               />
             </Menu>
           </Col>

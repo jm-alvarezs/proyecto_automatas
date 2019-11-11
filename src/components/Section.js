@@ -16,15 +16,15 @@ class Section extends Component {
             </Button>
           </Col>
         </Row>
-        <AdminTable
-          headers={this.props.headers}
+        <AdminTable          
           rows={this.props.rows}
-          editedRow={this.props.editedRow}
           idRow={this.props.idRow}
-          saveRow={this.props.saveRow}
-          inputModifier={this.props.inputModifier}
-          deleteRow={this.props.deleteRow}
+          headers={this.props.headers}
           reducer={this.props.reducer}          
+          saveRow={this.props.saveRow}
+          editedRow={this.props.editedRow}          
+          deleteRow={this.props.deleteRow}
+          inputModifier={this.props.inputModifier}
         />
       </Container>
     );
