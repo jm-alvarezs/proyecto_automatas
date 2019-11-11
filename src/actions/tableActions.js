@@ -13,3 +13,7 @@ export const setPropertyRow = (key, reducer, value) => dispatch => {
 export const createRow = (reducer, schema) => dispatch => {
     dispatch({ type: `CREATE_${reducer}`, payload: schema });
 };
+
+export const deleteRow = (reducer, idRow) => dispatch => {    
+    dispatch({ type: `DELETE_${reducer}`, payload: idRow });
+};

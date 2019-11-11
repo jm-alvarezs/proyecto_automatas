@@ -26,6 +26,11 @@ export default (state = INITIAL_STATE, action) => {
         let idx = symbols.findIndex(simbolo => simbolo.id === symbol.id);        
         if(idx !== -1) symbols[idx] = symbol;        
         return { ...state, simbolos: symbols, simbolo: undefined };
+    case "DELETE_SIMBOLO":
+      let letras = [...state.simbolos];
+      let indice = letras.findIndex(simbolo => simbolo.id === action.payload);
+      if(indice !== -1) letras.splice(indice, 1);
+      return { ...state, simbolos: letras };
     default:
       return { ...state };
   }

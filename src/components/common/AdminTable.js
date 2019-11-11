@@ -18,7 +18,7 @@ class AdminTable extends Component {
     if (!this.props.rows) return;
     if (isNaN(query)) query = query.toLowerCase();
     let searchResult = this.props.rows.filter(row => {
-      let result = Object.keys(row).filter(column => {        
+      let result = Object.keys(row).filter(column => {
         if (Array.isArray(row[column])) {
           return row[column].filter(subcolumn => {
             if (isNaN(subcolumn)) {
@@ -31,9 +31,9 @@ class AdminTable extends Component {
           if (row[column].toLowerCase().startsWith(query)) {
             return row;
           }
-        } else if (row[column] === query) {          
+        } else if (row[column] === query) {
           return row;
-        } else if(row[column] === Number(query)) {
+        } else if (row[column] === Number(query)) {
           return row;
         }
         return null;
@@ -65,7 +65,10 @@ class AdminTable extends Component {
 
   hasActions() {
     return (
-      this.props.editRow || this.props.deleteRow || this.props.customActions || this.props.saveRow
+      this.props.editRow !== undefined ||
+      this.props.deleteRow !== undefined ||
+      this.props.customActions !== undefined ||
+      this.props.saveRow !== undefined
     );
   }
 
@@ -143,11 +146,10 @@ class AdminTable extends Component {
           </Button>
         ) : (
           ""
-        )}
-        {this.props.deleteRow && this.props.confirm ? (
+        )}                
+        {this.props.deleteRow !== undefined && this.props.confirm !== undefined ? (
           <Button
-            variant="link"
-            className="text-danger"
+            variant="outline-danger"
             onClick={() =>
               this.props.confirm(
                 `¿Está seguro que desea eliminar el ${this.props.rowName} ${
@@ -159,17 +161,16 @@ class AdminTable extends Component {
           >
             <i className="fa fa-trash" />
           </Button>
-        ) : this.props.deleteRow ? (
+        ) : this.props.deleteRow !== undefined ? (
           <Button
-            variant="link"
-            className="text-danger"
+            variant="outline-danger"
             onClick={() => this.props.deleteRow(row[this.props.idRow])}
           >
             <i className="fa fa-trash" />
           </Button>
         ) : (
           ""
-        )}
+        )}        
         {this.props.customActions
           ? this.props.customActions.map((action, index) => {
               return (
@@ -195,7 +196,7 @@ class AdminTable extends Component {
     } else if (this.props.rows) {
       rowsToRender = this.props.rows;
     }
-    if (!rowsToRender) return <></>;    
+    if (!rowsToRender) return <></>;
     return (
       <tbody>
         {rowsToRender.map((row, index) => {

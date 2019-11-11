@@ -7,7 +7,8 @@ import {
   editRow,
   setPropertyRow,
   saveRow,
-  createRow
+  createRow,
+  deleteRow
 } from "./actions/tableActions";
 import { connect } from "react-redux";
 
@@ -54,23 +55,29 @@ class Home extends Component {
               <Section
                 idRow="id"
                 title="Símbolos"
+                reducer="SIMBOLO"
                 rows={this.props.simbolos}
                 editedRow={this.props.simbolo}
-                saveRow={simbolo => this.props.saveRow(simbolo, "SIMBOLO")}                
+                saveRow={this.props.saveRow}                
                 onClick={() => this.agregar("SIMBOLO")}
-                inputModifier={(property, reducer, value) => this.props.setPropertyRow(property, "SIMBOLO", value)}
+                inputModifier={this.props.setPropertyRow}
+                deleteRow={idRow => this.props.deleteRow("SIMBOLO", idRow)}
+                headers={["Símbolo"]}
               />
               <Section
+                idRow="id"
                 title="Estados"
                 rows={this.props.estados}
                 editedRow={this.props.estado}
                 onClick={() => this.agregar("ESTADO")}
+                headers={["Nombre"]}
               />
               <Section
                 title="Transiciones"
                 rows={this.props.transiciones}
                 editedRow={this.props.transicion}
                 onClick={() => this.agregar("TRANSICION")}
+                headers={["Inicial"].concat(this.props.simbolos.map(simbolo => simbolo.simbolo))}
               />
             </Menu>
           </Col>
@@ -102,5 +109,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editRow, saveRow, setPropertyRow, createRow }
+  { editRow, saveRow, setPropertyRow, createRow, deleteRow }
 )(Home);
