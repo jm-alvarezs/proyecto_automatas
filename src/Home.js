@@ -75,6 +75,7 @@ class Home extends Component {
           <Card.Title className="text-center">Cadena a Evaluar</Card.Title>
           <Card.Body>
             {this.props.message ? <p className="text-white" style={{ fontWeight: 600 }}>{this.props.message}</p> : ""}
+            {this.props.final ? <p className="text-white" style={{ fontWeight: 600 }}>Estado Final: {this.props.final}</p> : ""}
             <Input value={this.state.cadena} className="mb-3" modifier={cadena => this.setState({ cadena })} />
             <Button onClick={this.submit} block>
               Evaluar
@@ -82,7 +83,7 @@ class Home extends Component {
           </Card.Body>
         </Card>
         <Row className="mt-5">
-          <Col>
+          <Col md={12} lg={4}>
             <Section
               idRow="id"
               title="Símbolos"
@@ -96,7 +97,7 @@ class Home extends Component {
               headers={["Símbolo"]}
             />
           </Col>
-          <Col>
+          <Col md={12} lg={4}>
             <Section
               idRow="id"
               title="Estados"
@@ -122,7 +123,7 @@ class Home extends Component {
               />
             </Card>
           </Col>
-          <Col>
+          <Col md={12} lg={4}>
             <Section
               idRow="id"
               title="Transiciones"
@@ -151,7 +152,8 @@ const mapStateToProps = state => ({
   inicial: state.estados.inicial,
   estado: state.estados.estado,
   aceptado: state.estados.aceptado,
-  message: state.estados.message
+  message: state.estados.message,
+  final: state.estados.final
 });
 
 export default connect(mapStateToProps, {
