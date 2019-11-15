@@ -31,7 +31,7 @@ Nota: Si surge algún problema relacionado con permisos al ejecutar comandos npm
 <h4>Instrucciones de Ejecución:</h4>
 En cualquier momento se pueden agregar y eliminar símbolos, estados y transiciones. El algoritmo se ejecuta al hacer clic en el botón evaluar.<br/>
 Para indicar que un estado es final, se ingresa 1 en la columna “Final” en el formulario de Estados. Cualquier otro carácter o número se tomará como que el estado no es final.<br/>
-El estado inicial se agrega desde el selector en el formulario de Estado Inicial. Automáticamente, el primer estado agregado se convierte en Estado Inicial.<br/>
+El estado inicial se agrega desde el selector en el formulario de Estado Inicial. Automáticamente, el primer estado agregado se convierte en Estado Inicial.<br/><br/>
 
 <b>Autor:</b> Juan Manuel Alvarez Sánchez<br/>
 <b>Matrícula:</b> 511385<br/>
