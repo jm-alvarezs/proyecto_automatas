@@ -116,7 +116,7 @@ class Home extends Component {
                 as="select"
                 options={this.props.estados.map(estado => ({
                   name: estado.nombre,
-                  value: estado.id
+                  value: estado.nombre
                 }))}
                 modifier={this.props.setEstadoInicial}
                 value={this.props.inicial}
